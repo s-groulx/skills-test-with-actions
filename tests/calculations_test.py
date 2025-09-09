@@ -3,7 +3,7 @@ import sys
 import os
 
 # Installed Modules
-# None
+import pytest  # Add this import for exception testing
 
 # Project Modules
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
@@ -33,6 +33,11 @@ def test_area_of_circle_zero_radius():
     # Assert
     assert result == 0
 
+# Fix the issue
+def test_area_of_circle_negative_radius():
+    """Test with a negative radius."""
+    with pytest.raises(ValueError):
+        area_of_circle(-5)
 
 def test_get_nth_fibonacci_zero():
     """Test with n=0."""
